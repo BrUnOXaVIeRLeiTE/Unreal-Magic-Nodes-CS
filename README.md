@@ -16,9 +16,9 @@ I've put together a system which I call "Magic Node CS" where we can write some 
 
 ![Node1](https://i.imgur.com/xnlAANa.png)
 
-![Node2](https://i.imgur.com/MMjYp8p.png)
+![Node2](https://i.imgur.com/QkPtQSh.png)
 
-![Node3](https://i.imgur.com/QkPtQSh.png)
+![Node3](https://i.imgur.com/dyn77rZ.png)
 
 ![Node4](https://i.imgur.com/oXskwiC.png)
 
