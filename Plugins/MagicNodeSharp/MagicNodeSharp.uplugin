@@ -1,0 +1,44 @@
+{
+	"Version": 1,
+	"FileVersion": 1,
+	"VersionName": "0.0.1",
+	"Category": "SYNAPTECH",
+	"EngineVersion": "5.0.0",
+	"FriendlyName": "Magic Nodes (C#) (Experimental)",
+	"Description": "Scriptable Blueprint Nodes that compile and execute C# Scripts.",
+	"CreatedBy": "(C) Bruno Xavier Leite",
+	"CreatedByURL": "https://brunoxavierleite.wordpress.com",
+	"DocsURL": "https://brunoxavierleite.wordpress.com/2019/01/16/unreal-magic-nodes-programming/",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/38f49e7411bc47588e0d219758d6b16f",
+	"SupportURL": "mailto:bruno_xavier_@msn.com",
+	"CanContainContent": true,
+	"EnabledByDefault": true,
+	"IsBetaVersion": true,
+	"Installed": true,
+	"Modules": [
+		{
+			"Type": "Runtime",
+			"Name": "MagicNodeSharp",
+			"LoadingPhase": "Default",
+			"WhitelistPlatforms": [
+				"Win64"
+			]
+		},
+		{
+			"Type": "UncookedOnly",
+			"Name": "MagicNodeSharpKismet",
+			"LoadingPhase": "Default",
+			"WhitelistPlatforms": [
+				"Win64"
+			]
+		},
+		{
+			"Type": "Editor",
+			"Name": "MagicNodeSharpEditor",
+			"LoadingPhase": "PostEngineInit",
+			"WhitelistPlatforms": [
+				"Win64"
+			]
+		}
+	]
+}

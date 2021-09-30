@@ -1,0 +1,91 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+///			Copyright 2021 (C) Bruno Xavier B. Leite
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma once
+
+#include "MagicNodeSharpEditor.h"
+
+#include "ISettingsModule.h"
+#include "ISettingsSection.h"
+#include "ISettingsContainer.h"
+#include "ContentBrowserModule.h"
+
+#include "LevelEditor.h"
+#include "SlateBasics.h"
+#include "SlateExtras.h"
+#include "PropertyEditing.h"
+
+#include "IDetailCustomization.h"
+#include "IPropertyChangeListener.h"
+
+#include "Widgets/Docking/SDockTab.h"
+#include "Framework/MultiBox/MultiBoxBuilder.h"
+#include "Framework/MultiBox/MultiBoxExtender.h"
+
+#include "Modules/ModuleManager.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#define LOCTEXT_NAMESPACE "Synaptech"
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+static const FName DIFFToolTAB("CS_DIFFTool_Window");
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class IMagicNodeSharpEditor : public IModuleInterface {
+public:
+	virtual TSharedPtr<FExtensibilityManager>GetMagicNodeSharpEditorToolBarExtensibilityManager() {return nullptr;}
+public:
+	static inline IMagicNodeSharpEditor &Get() {return FModuleManager::LoadModuleChecked<IMagicNodeSharpEditor>("MagicNodeSharpEditor");}
+	static inline bool IsAvailable() {return FModuleManager::Get().IsModuleLoaded("MagicNodeSharpEditor");}
+};
+
+class FMagicNodeSharpEditor : public IMagicNodeSharpEditor {
+private:
+	TSharedPtr<FExtender>MenuExtender; 
+	TSharedPtr<FExtender>MainMenuExtender;
+	TSharedPtr<FExtensibilityManager>ToolBarExtensibilityManager;
+private:
+	TSharedRef<SDockTab>OnSpawnDiffToolTab(const FSpawnTabArgs &SpawnTabArgs);
+public:
+	virtual void StartupModule() override;
+	virtual void ShutdownModule() override;
+	virtual bool SupportsDynamicReloading() override {return false;}
+public:
+	virtual TSharedPtr<FExtensibilityManager>GetMagicNodeSharpEditorToolBarExtensibilityManager() override {return ToolBarExtensibilityManager;}
+public:
+	//static void ExtendMenu(FMenuBuilder &MenuBuilder);
+	static void ExtendMainMenu(FMenuBuilder &MenuBuilder);
+public:
+	static void CreateNewScriptAsset();
+public:
+	static UObject* GetSelectedAsset();
+	static UObject* GetObjectFromBP(UBlueprint* OBJ);
+	static UBlueprint* GetBlueprintFromOBJ(UObject* OBJ);
+public:
+	static void DIFF_InvokeTAB(UMagicNodeSharpSource* Left, UMagicNodeSharpSource* Right);
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class MAGICNODESHARPEDITOR_API FMagicNodeSharpCustomDetails : public IDetailCustomization {
+private:
+	//TSharedPtr<SNodeScriptPropertyEditor>SNodeScript;
+public:
+	static TSharedRef<IDetailCustomization>MakeInstance();
+public:
+	virtual void CustomizeDetails(IDetailLayoutBuilder &DetailBuilder) override;
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#undef LOCTEXT_NAMESPACE
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
