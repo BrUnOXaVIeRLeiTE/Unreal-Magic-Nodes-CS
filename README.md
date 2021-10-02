@@ -30,7 +30,7 @@ I've put together a system which I call "Magic Node CS" where we can write some 
 ----------
 
 
-###'Binaries.zip' content must be unpacked to 'Plugins/MagicNodeSharp/Binaries/' if you expect this system to run.
+### 'Binaries.zip' content must be unpacked to 'Plugins/MagicNodeSharp/Binaries/' if you expect this system to run.
 
 More Info: [Unreal Forums]: https://forums.unrealengine.com/t/magic-nodes/121220
 
